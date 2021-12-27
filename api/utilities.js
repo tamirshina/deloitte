@@ -2,6 +2,8 @@ var https = require('https');
 var qs = require('querystring');
 var axios = require('axios');
 var fs = require('fs');
+const path = require("path");
+
 const { apiVariables } = require('./data');
 
 function getToken() {
@@ -40,69 +42,73 @@ function getToken() {
 
 function postLead(accessToken) {
 
-    var leadData = JSON.stringify([
-        {
-            "company": "Shina Inc.",
-            "leadStatus": "New",
-            "phone": "01234-5678900",
-            "email": "harris@company.co.uk",
-            "title": "CEO",
-            "country": "GB",
-            "address": {
-                "addressLine1": "308 Negra Arroyo Lane",
-                "city": "Albuquerque",
-                "postalCode": "BT0 0AB",
-                "country": "US"
-            },
-            "salutation": "Mr.",
-            "firstName": "Walter",
-            "lastName": "black",
-            "description": "This lead is from Jupiter",
-            "website": "www.google.com",
-            "industry": "Technology, Media and Telecom",
-            "sector": "Technology",
-            "currency": "GBP",
-            "leadSource": "Partner",
-            "rating": "Hot",
-            "mobilePhone": "+91 893426992",
-            "departmentSegmentation": "Strategy",
-            "deloitteAlumnus": true,
-            "jobTitle": [
-                "Analyst"
-            ]
-        }
-    ]);
+    return new Promise(function (resolve, reject) {
 
-    var options = {
-        hostname: apiVariables.createLeadVars.host,
-        port: 443,
-        path: apiVariables.createLeadVars.pathToLead,
-        method: 'POST',
-        body: leadData,
-        key: fs.readFileSync(apiVariables.createLeadVars.pathToKey + '/key.pem'),
-        cert: fs.readFileSync(apiVariables.createLeadVars.pathToKey + '/cert.pem'),
-        headers: {
-            'client_id': apiVariables.createLeadVars.client_id,
-            'client_secret': apiVariables.createLeadVars.client_secret,
-            'Authorization': 'Bearer' + ' ' + accessToken,
-            'Content-Type': 'application/json',
-        }
-    };
+        var leadData = JSON.stringify([
+            {
+                "company": "Shina Inc.",
+                "leadStatus": "New",
+                "phone": "01234-5678900",
+                "email": "harris@company.co.uk",
+                "title": "CEO",
+                "country": "GB",
+                "address": {
+                    "addressLine1": "308 Negra Arroyo Lane",
+                    "city": "Albuquerque",
+                    "postalCode": "BT0 0AB",
+                    "country": "US"
+                },
+                "salutation": "Mr.",
+                "firstName": "Walter",
+                "lastName": "black",
+                "description": "This lead is from Jupiter",
+                "website": "www.google.com",
+                "industry": "Technology, Media and Telecom",
+                "sector": "Technology",
+                "currency": "GBP",
+                "leadSource": "Partner",
+                "rating": "Hot",
+                "mobilePhone": "+91 893426992",
+                "departmentSegmentation": "Strategy",
+                "deloitteAlumnus": true,
+                "jobTitle": [
+                    "Analyst"
+                ]
+            }
+        ]);
 
-    const request = https.request(options, function (response) {
-        console.log(response.statusCode);
-        response.on('data', function (d) {
-            process.stdout.write('server response:' + d);
-            //return d;
+        var options = {
+            hostname: apiVariables.createLeadVars.host,
+            port: 443,
+            path: apiVariables.createLeadVars.pathToLead,
+            method: 'POST',
+            body: leadData,
+            key: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/key.pem')),
+            cert: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/cert.pem')),
+            headers: {
+                'client_id': apiVariables.createLeadVars.client_id,
+                'client_secret': apiVariables.createLeadVars.client_secret,
+                'Authorization': 'Bearer' + ' ' + accessToken,
+                'Content-Type': 'application/json',
+            }
+        };
+
+        const request = https.request(options, function (response) {
+            console.log(response.statusCode)
+            console.log(response.statusMessage)
+            resolve(response.statusMessage)
+            response.on('data', function (d) {
+                console.log('server response for lead:' + d)
+            });
         });
-    });
-    request.write(leadData);
+        request.write(leadData);
 
-    request.on('error', error => {
-        console.error('we got an error -' + error)
-        //return error;
+        request.on('error', error => {
+            console.error('we got an error -' + error)
+            reject(error);
+        })
+        request.end();
     })
-    request.end();
 }
 
 function dummyApi() {

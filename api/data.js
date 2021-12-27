@@ -11,6 +11,7 @@ const apiVariables = {
         client_id: 'f9ba45d3480840c18ab01c3f46d151ec',
         client_secret: '4e6f2A5d30C2480fB14F130ff9a89793',
         pathToKey: '../keys/ssl-certificate/ssl-certificate',
+        pathToLocalKey: '../assets',
         host: 'crm-api-sandbox.deloitteresources.com',
         pathToLead: '/qa/v1/marketing/leadBulk'
     }

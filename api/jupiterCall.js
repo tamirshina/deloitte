@@ -5,18 +5,18 @@ const utilities = require('./utilities');
 
 router.get("/jupiter", async function (req, res) {
 
-    // let accessToken = await utilities.getToken();
-    // utilities.postLead(accessToken);
+    console.log('getting things going')
 
-    let dummyRes = await utilities.dummyApi();
+    let accessToken = await utilities.getToken();
+    let notResponse = await utilities.postLead(accessToken);
 
-    console.log(dummyRes);
+    //let dummyRes = await utilities.dummyApi();
 
     res.header("Access-Control-Allow-Origin", "*");
 
     res.json({
-        message: "Hello from jupiter!",
-        data: dummyRes.info.count
+        message: "Hello from jupiter!!",
+        data: notResponse
     });
 });
 
