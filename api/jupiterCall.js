@@ -3,12 +3,19 @@ var router = express.Router();
 const utilities = require('./utilities');
 
 
-router.get("/jupiter", async function (req, res) {
+router.post("/jupiter", async function (req, res) {
 
     console.log('getting things going')
 
-    let accessToken = await utilities.getToken();
-    let notResponse = await utilities.postLead(accessToken);
+    var bodyStr = '';
+
+    req.on("data", function (chunk) {
+        bodyStr += chunk.toString();
+        console.log("our body string is - ", bodyStr)
+    });
+
+    // let accessToken = await utilities.getToken();
+    // let notResponse = await utilities.postLead(accessToken);
 
     //let dummyRes = await utilities.dummyApi();
 
@@ -16,7 +23,7 @@ router.get("/jupiter", async function (req, res) {
 
     res.json({
         message: "Hello from jupiter!!",
-        data: notResponse
+        data: bodyStr
     });
 });
 
