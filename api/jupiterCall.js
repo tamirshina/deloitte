@@ -3,7 +3,7 @@ var router = express.Router();
 const utilities = require('./utilities');
 
 
-router.post("/jupiter", async function (req, res) {
+router.get("/jupiter", async function (req, res) {
 
     console.log('getting things going')
 
