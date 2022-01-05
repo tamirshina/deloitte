@@ -84,8 +84,8 @@ function postLead(accessToken) {
             path: apiVariables.createLeadVars.pathToLead,
             method: 'POST',
             body: leadData,
-            key: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/key.pem')),
-            cert: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/cert.pem')),
+            //key: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/key.pem')),
+            //cert: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/cert.pem')),
             headers: {
                 'client_id': apiVariables.createLeadVars.client_id,
                 'client_secret': apiVariables.createLeadVars.client_secret,

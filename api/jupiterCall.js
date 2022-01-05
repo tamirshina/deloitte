@@ -7,15 +7,15 @@ router.post("/jupiter", async function (req, res) {
 
     console.log('getting things going')
 
-    var bodyStr = '';
+    var bodyStr = 'bodyStr';
 
-    req.on("data", function (chunk) {
-        bodyStr += chunk.toString();
-        console.log("our body string is - ", bodyStr)
-    });
+    // req.on("data", function (chunk) {
+    //     bodyStr += chunk.toString();
+    //     console.log("our body string is - ", bodyStr)
+    // });
 
-    // let accessToken = await utilities.getToken();
-    // let notResponse = await utilities.postLead(accessToken);
+    let accessToken = await utilities.getToken();
+    let notResponse = await utilities.postLead(accessToken);
 
     //let dummyRes = await utilities.dummyApi();
 
@@ -23,7 +23,7 @@ router.post("/jupiter", async function (req, res) {
 
     res.json({
         message: "Hello from jupiter!!",
-        data: bodyStr
+        data: notResponse
     });
 });
 
