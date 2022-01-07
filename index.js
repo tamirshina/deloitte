@@ -25,7 +25,7 @@ app.post("/data", (req, res) => {
 
 });
 
-function postDataToJupiter(data) {
+async function postDataToJupiter(data) {
 
     console.log('starting posting data to jupiter')
 
