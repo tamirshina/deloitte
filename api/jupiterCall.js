@@ -7,17 +7,10 @@ router.get("/jupiter", async function (req, res) {
 
     console.log('getting things going')
 
-    var bodyStr = 'bodyStr';
-
-    // req.on("data", function (chunk) {
-    //     bodyStr += chunk.toString();
-    //     console.log("our body string is - ", bodyStr)
-    // });
-
     let accessToken = await utilities.getToken()
         .then(console.log('token promise done '))
         .catch(error => console.log('promise token error', error))
-    let notResponse = await utilities.postLead(accessToken)
+    let response = await utilities.postLead(accessToken)
         .then(res => console.log('postLead promise res', res))
         .catch(error => console.log('postLead promise error', error))
 
@@ -27,7 +20,7 @@ router.get("/jupiter", async function (req, res) {
 
     res.json({
         message: "Hello from jupiter!!",
-        data: notResponse
+        data: response
     });
 });
 

@@ -14,9 +14,6 @@ function getToken() {
 
         let token = '';
 
-        process.stdout.write('client_id' + process.env.client_id_token);
-        process.stdout.write('client_secret' + process.env.client_secret_token);
-
         var data = qs.stringify({
             'grant_type': 'client_credentials',
             'client_id': process.env.client_id_token || localVars.client_id_token,
@@ -45,17 +42,17 @@ function getToken() {
     });
 }
 
-function postLead(accessToken) {
+function postLead(accessToken, companyName, companyId, personName, personEmail, message, phone) {
 
     process.stdout.write('posting lead');
     return new Promise(function (resolve, reject) {
 
         var leadData = JSON.stringify([
             {
-                "company": "Shina Inc.",
+                "company": companyName || "unset value",
                 "leadStatus": "New",
-                "phone": "01234-5678900",
-                "email": "harris@company.co.uk",
+                "phone": phone || "unset value",
+                "email": personEmail || "unset value",
                 "title": "CEO",
                 "country": "GB",
                 "address": {
@@ -65,9 +62,9 @@ function postLead(accessToken) {
                     "country": "US"
                 },
                 "salutation": "Mr.",
-                "firstName": "Walter",
-                "lastName": "black",
-                "description": "This lead is from Jupiter",
+                "firstName": personName || "unset value",
+                "lastName": companyId || "unset value",
+                "description": message || "no message from user",
                 "website": "www.google.com",
                 "industry": "Technology, Media and Telecom",
                 "sector": "Technology",
