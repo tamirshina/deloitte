@@ -6,6 +6,7 @@ const path = require("path");
 var bodyParser = require('body-parser')
 
 const { apiVariables } = require('./data');
+const { localVars } = require('../local');
 
 function getToken() {
 
@@ -15,8 +16,8 @@ function getToken() {
 
         var data = qs.stringify({
             'grant_type': 'client_credentials',
-            'client_id': apiVariables.getTokenVars.client_id,
-            'client_secret': apiVariables.getTokenVars.client_secret,
+            'client_id': process.env.client_id_token || localVars.client_id_token,
+            'client_secret': process.env.client_secret_token || localVars.client_secret_token,
             'resource': apiVariables.getTokenVars.resource
         });
         var config = {
@@ -84,11 +85,11 @@ function postLead(accessToken) {
             path: apiVariables.createLeadVars.pathToLead,
             method: 'POST',
             body: leadData,
-            //key: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/key.pem')),
-            //cert: fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/cert.pem')),
+            key: process.env.ssl_key || fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/key.pem')),
+            cert: process.env.ssl_certificate || fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/cert.pem')),
             headers: {
-                'client_id': apiVariables.createLeadVars.client_id,
-                'client_secret': apiVariables.createLeadVars.client_secret,
+                'client_id': process.env.client_id_lead || localVars.client_id_lead,
+                'client_secret': process.env.client_secret_lead || localVars.client_secret_lead,
                 'Authorization': 'Bearer' + ' ' + accessToken,
                 'Content-Type': 'application/json',
             }
