@@ -44,6 +44,7 @@ function getToken() {
 
 function postLead(accessToken) {
 
+    process.stdout.write('posting lead');
     return new Promise(function (resolve, reject) {
 
         var leadData = JSON.stringify([
@@ -107,6 +108,7 @@ function postLead(accessToken) {
 
         request.on('error', error => {
             console.error('we got an error -' + error)
+            process.stdout.write('got error on lead -' + error);
             reject(error);
         })
         request.end();

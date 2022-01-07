@@ -14,8 +14,12 @@ router.get("/jupiter", async function (req, res) {
     //     console.log("our body string is - ", bodyStr)
     // });
 
-    let accessToken = await utilities.getToken();
-    let notResponse = await utilities.postLead(accessToken);
+    let accessToken = await utilities.getToken()
+        .then(console.log('token promise done '))
+        .catch(console.log('promise token error'))
+    let notResponse = await utilities.postLead(accessToken)
+        .then(res => console.log('postLead promise res', res))
+        .catch(error => console.log('postLead promise error', error))
 
     //let dummyRes = await utilities.dummyApi();
 
