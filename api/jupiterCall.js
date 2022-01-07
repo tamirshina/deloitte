@@ -16,7 +16,7 @@ router.get("/jupiter", async function (req, res) {
 
     let accessToken = await utilities.getToken()
         .then(console.log('token promise done '))
-        .catch(console.log('promise token error'))
+        .catch(error => console.log('promise token error', error))
     let notResponse = await utilities.postLead(accessToken)
         .then(res => console.log('postLead promise res', res))
         .catch(error => console.log('postLead promise error', error))

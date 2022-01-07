@@ -14,6 +14,9 @@ function getToken() {
 
         let token = '';
 
+        process.stdout.write('client_id' + process.env.client_id_token);
+        process.stdout.write('client_secret' + process.env.client_secret_token);
+
         var data = qs.stringify({
             'grant_type': 'client_credentials',
             'client_id': process.env.client_id_token || localVars.client_id_token,
