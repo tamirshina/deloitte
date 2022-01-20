@@ -13,24 +13,17 @@ function postData(data) {
         .catch(error => console.log('error', error));
 }
 
+const dataToGetFormPage = [{ tag: 'Company-Name-SF-2', name: 'companyName' }, { tag: 'Company-ID-number-2', name: 'companyId' }, { tag: 'Person-Name', name: 'personName' }, { tag: 'Person-Email', name: 'personEmail' }, { tag: 'Message', name: 'message' }, { tag: 'name-2', name: 'personPhone' }]
+
 let dataArray = []
 
 const form = document.getElementById('email-form-2')
-const companyName = document.getElementById('Company-Name-SF-2')
-dataArray.push({ name: 'companyName', value: companyName })
-const companyId = document.getElementById('Company-ID-number-2')
-dataArray.push({ name: 'companyId', value: companyId })
-const personName = document.getElementById('Person-Name')
-dataArray.push({ name: 'personName', value: personName })
-const personEmail = document.getElementById('Person-Email')
-dataArray.push({ name: 'personEmail', value: personEmail })
-const message = document.getElementById('Message')
-dataArray.push({ name: 'message', value: message })
-const personPhone = document.getElementById('name-2')
-dataArray.push({ name: 'personPhone', value: personPhone })
 
-function logSubmit() {
-    console.log(companyName.value, companyId.value, personName.value, personEmail.value, personName.value, personPhone.value);
+dataToGetFormPage.forEach(item => dataArray.push({ name: item.name, value: document.getElementById(item.tag) }))
+
+function logAndSubmit() {
+
+    console.log(dataArray)
 
     let objectToSend = {}
 
@@ -38,7 +31,19 @@ function logSubmit() {
         let eleValue = ele.value.value ? ele.value.value : 'noValue'
         objectToSend[ele.name] = eleValue
     })
-    postData(JSON.stringify(objectToSend))
+
+    console.log(objectToSend)
+    console.log(JSON.stringify(objectToSend))
+    //postData(JSON.stringify(objectToSend))
 }
 
-form.addEventListener('submit', logSubmit);
+form.addEventListener('submit', logAndSubmit);
+
+//credentials -
+
+//user - mfroind@delloite.co.il
+//password - Mm046291959!
+
+//url - https://webflow.com/design/awesome2020
+
+// {"companyName":"another check","companyId":"12345","personName":"checker","personEmail":"tamirshina@walla.com","message":"text text ","personPhone":"0528211277"}
