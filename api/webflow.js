@@ -12,8 +12,34 @@ function postData(data) {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
+function getName() {
 
-const dataToGetFormPage = [{ tag: 'Company-Name-SF-2', name: 'companyName' }, { tag: 'Company-ID-number-2', name: 'companyId' }, { tag: 'Person-Name', name: 'personName' }, { tag: 'Person-Email', name: 'personEmail' }, { tag: 'Message', name: 'message' }, { tag: 'name-2', name: 'personPhone' }]
+    let fullName = {}
+    const name = document.getElementById('Person-Name').value
+
+    if (name.indexOf(' ') === -1) {
+        fullName.first = name
+        fullName.last = name
+    } else {
+        let spaceIndex = name.indexOf(' ')
+        let first = name.substring(0, spaceIndex)
+        let last = name.substring(spaceIndex)
+
+        fullName.first = first
+        fullName.last = last
+    }
+    return fullName
+}
+
+function getSubjects() {
+
+    let subjects = []
+    let nodeList = document.querySelectorAll('input[type="checkbox"]:checked')
+    nodeList.forEach(el => subjects.push(el.name.substring(0, el.name.indexOf('-checkbox'))))
+    return subjects
+}
+
+const dataToGetFormPage = [{ tag: 'Company-Name-SF-2', name: 'companyName' }, { tag: 'Person-Email', name: 'personEmail' }, { tag: 'Message', name: 'message' }, { tag: 'name-2', name: 'personPhone' }]
 
 let dataArray = []
 
@@ -23,8 +49,6 @@ dataToGetFormPage.forEach(item => dataArray.push({ name: item.name, value: docum
 
 function logAndSubmit() {
 
-    console.log(dataArray)
-
     let objectToSend = {}
 
     dataArray.forEach(ele => {
@@ -32,18 +56,13 @@ function logAndSubmit() {
         objectToSend[ele.name] = eleValue
     })
 
+    objectToSend['subjectInterest'] = getSubjects()
+    objectToSend['firstName'] = getName().first
+    objectToSend['lastName'] = getName().last
+
     console.log(objectToSend)
     console.log(JSON.stringify(objectToSend))
     //postData(JSON.stringify(objectToSend))
 }
 
 form.addEventListener('submit', logAndSubmit);
-
-//credentials -
-
-//user - mfroind@delloite.co.il
-//password - Mm046291959!
-
-//url - https://webflow.com/design/awesome2020
-
-// {"companyName":"another check","companyId":"12345","personName":"checker","personEmail":"tamirshina@walla.com","message":"text text ","personPhone":"0528211277"}

@@ -1,0 +1,150 @@
+{
+
+    "leadGuid": "852a6247-426d-6244-b840-f4h677a21c72",
+
+    "company": "Cat Inc.",
+
+    "leadStatus": "New",
+
+    "phone": "01234-5678900",
+
+    "email": "harris@company.co.uk",
+
+    "title": "CEO",
+
+    "country": "GB",
+
+    "address": {
+
+      "addressLine1": "308 Negra Arroyo Lane",
+
+      "city": "Albuquerque",
+
+      "stateProvince": "Salavan",
+
+      "postalCode": "BT0 0AB",
+
+      "country": "US"
+
+    },
+
+    "salutation": "Mr.",
+
+    "firstName": "Walter",
+
+    "lastName": "White",
+
+    "ownerGuid": "1068589",
+
+    "clientServiceLevel": {
+
+      "levelOne": "Audit and Assurance",
+
+      "levelTwo": "Assurance Services",
+
+      "levelThree": "Business Assurance"
+
+    },
+
+    "rfpProcess": "Yes",
+
+    "rfpDecisionDate": "2019-06-10",
+
+    "rfpReleaseDate": "2019-12-10",
+
+    "description": "This lead is from Jupiter",
+
+    "website": "www.google.com",
+
+    "industry": "Technology, Media and Telecom",
+
+    "sector": "Technology",
+
+    "currency": "GBP",
+
+    "leadSource": "Partner",
+
+    "rating": "Hot",
+
+    "deloitteAlumnus": true,
+
+    "relationshipOwner": "1068589",
+
+    "leadScore": "twenty",
+
+    "preferredEventLocation": "India",
+
+    "subjectOfInterest": "Emerging Technology",
+
+    "ownerEmployeeCode": "0051X000001sE7X",
+
+    "invalidEmail": false,
+
+    "hasOptedOutOfEmail": false,
+
+    "departmentSegmentation": "Strategy",
+
+    "department": "Technology",
+
+    "mobilePhone": "+91 893426992",
+
+    "jobTitle": [
+
+      "Analyst"
+
+    ],
+
+    "subSector": "Software and Services",
+
+    "sicName": "Computer & Data Processing Services"
+
+  },
+
+
+
+MANDATORY FIELDS -
+
+First Name
+
+Last Name
+
+Lead Status- הערך הדיפולטיבי צריך להיות New
+
+Company
+
+Email
+
+Job Title (Segmentation)- אדאג לשלוח לך רשימה מסודרת בנפרד
+
+- Lead Currencyהערך הדיפולטיבי צריך להיות ILS - Israeli Shekel
+
+Geography- הערך הדיפולטיבי צריך להיות Israel
+
+Job Title (Segmentation)--
+
+Awaiting Information
+
+Chairman Executive Board
+
+Chief Digital Officer
+
+Chief Marketing Officer
+
+Chief Strategy Officer
+
+Chief Technology Officer
+
+Consultant
+
+Founding Partner
+
+Head of
+
+Manager
+
+Other Board Member
+
+Owner
+
+Partner
+

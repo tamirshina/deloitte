@@ -59,40 +59,34 @@ function getToken() {
     });
 }
 
-function postLead(accessToken, companyName, companyId, personName, personEmail, message, phone) {
+function postLead(accessToken, companyName, firstName, lastName, personEmail, message, phone, subjectInterest) {
 
     process.stdout.write('posting lead');
     return new Promise(function (resolve, reject) {
 
         var leadData = JSON.stringify([
             {
-                "company": companyName || "unset value",
+                "company": companyName || "",
                 "leadStatus": "New",
-                "phone": phone || "unset value",
-                "email": personEmail || "unset value",
-                "title": "CEO",
-                "country": "GB",
-                "address": {
-                    "addressLine1": "308 Negra Arroyo Lane",
-                    "city": "Albuquerque",
-                    "postalCode": "BT0 0AB",
-                    "country": "US"
-                },
-                "salutation": "Mr.",
-                "firstName": personName || "unset value",
-                "lastName": companyId || "unset value",
-                "description": message || "no message from user",
-                "website": "www.google.com",
-                "industry": "Technology, Media and Telecom",
-                "sector": "Technology",
-                "currency": "GBP",
-                "leadSource": "Partner",
+                "phone": "",
+                "email": personEmail,
+                "title": "",
+                "country": "IL",
+                "salutation": "",
+                "firstName": firstName,
+                "lastName": lastName,
+                "description": message || "",
+                "website": "",
+                "industry": "",
+                "sector": "",
+                "currency": "ILS",
+                "leadSource": "Web",
                 "rating": "Hot",
-                "mobilePhone": "+91 893426992",
-                "departmentSegmentation": "Strategy",
+                "mobilePhone": phone || "",
+                "subjectOfInterest": subjectInterest || "",
                 "deloitteAlumnus": true,
                 "jobTitle": [
-                    "Analyst"
+                    "Chief Marketing Officer"
                 ]
             }
         ]);

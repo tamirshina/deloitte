@@ -41,7 +41,7 @@ async function postDataToJupiter(data) {
 
     let accessToken = await utilities.getToken()
 
-    return utilities.postLead(accessToken, parsedData.companyName, parsedData.companyId, parsedData.personName, parsedData.personEmail, parsedData.message, parsedData.personPhone)
+    return utilities.postLead(accessToken, parsedData.companyName, parsedData.firstName, parsedData.lastName, parsedData.personEmail, parsedData.message, parsedData.personPhone, parsedData.subjectInterest.toString())
 
 }
 

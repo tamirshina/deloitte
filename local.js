@@ -11,4 +11,13 @@ const localVars = {
     client_secret_lead: '4e6f2A5d30C2480fB14F130ff9a89793'
 }
 
+//credentials -
+
+//user - mfroind@delloite.co.il
+//password - Mm046291959!
+
+//url - https://webflow.com/design/awesome2020
+
+// {"companyName":"another check","companyId":"12345","personName":"checker","personEmail":"tamirshina@walla.com","message":"text text ","personPhone":"0528211277"}
+
 module.exports.localVars = localVars;
