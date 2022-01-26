@@ -3,9 +3,7 @@ var qs = require('querystring');
 var axios = require('axios');
 var fs = require('fs');
 const path = require("path");
-
 const { apiVariables } = require('./data');
-const { localVars } = require('../local');
 
 async function getRequestData(req) {
 
@@ -34,8 +32,8 @@ function getToken() {
 
         var data = qs.stringify({
             'grant_type': 'client_credentials',
-            'client_id': process.env.client_id_token || localVars.client_id_token,
-            'client_secret': process.env.client_secret_token || localVars.client_secret_token,
+            'client_id': process.env.client_id_token,
+            'client_secret': process.env.client_secret_token,
             'resource': apiVariables.getTokenVars.resource
         });
         var config = {
@@ -99,8 +97,8 @@ function postLead(accessToken, companyName, firstName, lastName, personEmail, me
             key: process.env.ssl_key || fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/key.pem')),
             cert: process.env.ssl_certificate || fs.readFileSync(path.resolve(__dirname, apiVariables.createLeadVars.pathToLocalKey + '/cert.pem')),
             headers: {
-                'client_id': process.env.client_id_lead || localVars.client_id_lead,
-                'client_secret': process.env.client_secret_lead || localVars.client_secret_lead,
+                'client_id': process.env.client_id_lead,
+                'client_secret': process.env.client_secret_lead,
                 'Authorization': 'Bearer' + ' ' + accessToken,
                 'Content-Type': 'application/json',
             }

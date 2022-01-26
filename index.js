@@ -17,20 +17,16 @@ app.post("/data", async (req, res) => {
         let responseFromServer = await postDataToJupiter(data)
 
         res.header("Access-Control-Allow-Origin", "*");
-
         res.json({
             message: responseFromServer
         })
 
     } catch (error) {
         res.header("Access-Control-Allow-Origin", "*");
-
         res.json({
             message: "error " + error
         })
     }
-
-
 });
 
 async function postDataToJupiter(data) {
