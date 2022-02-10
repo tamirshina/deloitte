@@ -6,8 +6,8 @@ const apiVariables = {
     },
     createLeadVars: {
         host: 'crm-api.deloitteresources.com',
-        pathToKey: '../../keys/ssl-certificate/ssl-certificate',
-        pathToLocalKey: '../../keys/ssl-certificate/ssl-certificate',
+        pathToKey: '../../keys/Prod SSL',
+        pathToLocalKey: '../../keys/Prod SSL',
         pathToLead: '/v1/marketing/leadBulk'
     }
 
