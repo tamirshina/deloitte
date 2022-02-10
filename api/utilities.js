@@ -74,6 +74,9 @@ function postLead(accessToken, companyName, firstName, lastName, personEmail, me
                 "firstName": firstName,
                 "lastName": lastName,
                 "description": message || "",
+                "address": {
+                    "country": "IL"
+                },
                 "website": "",
                 "industry": "",
                 "sector": "",

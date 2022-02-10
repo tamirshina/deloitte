@@ -43,7 +43,7 @@ const dataToGetFormPage = [{ tag: 'Company-Name-SF-2', name: 'companyName' }, { 
 
 let dataArray = []
 
-const form = document.getElementById('email-form-2')
+const form = document.getElementById('wf-form-Contact-Form-2')
 
 dataToGetFormPage.forEach(item => dataArray.push({ name: item.name, value: document.getElementById(item.tag) }))
 
@@ -59,6 +59,7 @@ function logAndSubmit() {
     objectToSend['subjectInterest'] = getSubjects()
     objectToSend['firstName'] = getName().first
     objectToSend['lastName'] = getName().last
+    objectToSend['address'] = { country: "Israel" }
 
     console.log(objectToSend)
     console.log(JSON.stringify(objectToSend))
